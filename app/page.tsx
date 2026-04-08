@@ -128,14 +128,14 @@ const RAW = [
   [148,"Liên minh giữa GCCN với GCND và đội ngũ trí thức ở Việt Nam có thuận lợi là do",["Giai cấp công nhân có số lượng đông","Họ cùng có lợi ích chung","Người nông dân có bản tính chân thật","Đội ngũ trí thức không có hệ tư tưởng riêng"],1,5],
   [149,"Sau đổi mới, ở Việt Nam xuất hiện giai cấp, tầng lớp mới nào?",["Đội ngũ trí thức","Giai cấp công nhân","Đội ngũ doanh nhân","Giai cấp tư sản"],2,5],
   [150,"Từ năm 2004, Nhà nước ta lấy ngày 13/10 hằng năm để tôn vinh lực lượng nào?",["Trí thức","Phụ nữ","Doanh nhân","Thanh niên"],2,5],
-  [151,"Yeu anh Dan khong?",["Co","Co chu","Co luon","Co het long"],0,5],
+  [151,"Yêu anh Đan không?",["Có","Có chứ","Có luôn","Có hết lòng"],0,5],
 ]
 
 const CHAPTERS: Record<number, string> = {
-  2: "Chuong 2: Su menh lich su GCCN",
-  3: "Chuong 3: CNXH & Thoi ki qua do",
-  4: "Chuong 4: Dan chu XHCN & Nha nuoc XHCN",
-  5: "Chuong 5: Co cau xa hoi - Giai cap"
+  2: "Chương 2: Sứ mệnh lịch sử GCCN",
+  3: "Chương 3: CNXH & Thời kì quá độ",
+  4: "Chương 4: Dân chủ XHCN & Nhà nước XHCN",
+  5: "Chương 5: Cơ cấu xã hội - Giai cấp"
 }
 
 const LABELS = ["A", "B", "C", "D"]
@@ -280,26 +280,26 @@ export default function QuizApp() {
               Quiz CNXHKH
             </h1>
             <p className="text-center text-muted-foreground text-sm mb-7">
-              Chu nghia Xa hoi Khoa hoc
+              Chủ nghĩa Xã hội Khoa học
             </p>
 
             <div className="grid grid-cols-3 gap-3 mb-7">
               <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
                 <div className="text-2xl font-bold text-[#4f46e5]">120</div>
-                <div className="text-xs text-muted-foreground mt-1">Cau hoi</div>
+                <div className="text-xs text-muted-foreground mt-1">Câu hỏi</div>
               </div>
               <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
                 <div className="text-2xl font-bold text-[#4f46e5]">4</div>
-                <div className="text-xs text-muted-foreground mt-1">Chuong</div>
+                <div className="text-xs text-muted-foreground mt-1">Chương</div>
               </div>
               <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
                 <div className="text-2xl font-bold text-[#4f46e5]">100%</div>
-                <div className="text-xs text-muted-foreground mt-1">Co dap an</div>
+                <div className="text-xs text-muted-foreground mt-1">Có đáp án</div>
               </div>
             </div>
 
             <div className="text-sm font-semibold text-foreground mb-3">
-              Chon chuong (hoac hoc tat ca)
+              Chọn chương (hoặc học tất cả)
             </div>
             <div className="grid grid-cols-2 gap-2.5 mb-5">
               <button
@@ -312,7 +312,7 @@ export default function QuizApp() {
                 )}
               >
                 <span className="text-xl block mb-1">&#9733;</span>
-                Tat ca chuong
+                Tất cả chương
               </button>
               {Object.entries(CHAPTERS).map(([k, v]) => (
                 <button
@@ -338,7 +338,7 @@ export default function QuizApp() {
                   onCheckedChange={(checked) => setShuffleQ(checked as boolean)}
                   className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
                 />
-                Xao tron cau hoi
+                Xáo trộn câu hỏi
               </label>
               <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
                 <Checkbox
@@ -346,7 +346,7 @@ export default function QuizApp() {
                   onCheckedChange={(checked) => setShuffleA(checked as boolean)}
                   className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
                 />
-                Xao tron dap an
+                Xáo trộn đáp án
               </label>
             </div>
 
@@ -354,7 +354,7 @@ export default function QuizApp() {
               onClick={startQuiz}
               className="w-full py-6 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-xl text-base"
             >
-              Bat dau lam bai →
+              Bắt đầu làm bài →
             </Button>
           </CardContent>
         </Card>
@@ -381,7 +381,7 @@ export default function QuizApp() {
 
             <div className="flex justify-between items-center mb-4">
               <span className="text-sm text-muted-foreground">
-                Cau {idx + 1}/{total} (Cau {q.n})
+                Câu {idx + 1}/{total} (Câu {q.n})
               </span>
               <span className="text-xs bg-[#f0f0ff] text-[#4f46e5] px-2.5 py-1 rounded-full font-medium">
                 {CHAPTERS[q.ch]?.split(":")[0] || ""}
@@ -440,8 +440,8 @@ export default function QuizApp() {
                 )}
               >
                 {selected === q.a
-                  ? "Chinh xac!"
-                  : `Sai roi! Dap an dung: ${LABELS[q.a]}. ${q.o[q.a]}`}
+                  ? "Chính xác!"
+                  : `Sai rồi! Đáp án đúng: ${LABELS[q.a]}. ${q.o[q.a]}`}
               </div>
             )}
 
@@ -452,7 +452,7 @@ export default function QuizApp() {
                   variant="outline"
                   className="px-7 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
                 >
-                  ← Cau truoc
+                  ← Câu trước
                 </Button>
               ) : (
                 <span />
@@ -462,7 +462,7 @@ export default function QuizApp() {
                   onClick={handleNext}
                   className="px-7 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
                 >
-                  {idx + 1 < total ? "Cau tiep theo →" : "Xem ket qua"}
+                  {idx + 1 < total ? "Câu tiếp theo →" : "Xem kết quả"}
                 </Button>
               ) : (
                 <span />
@@ -480,12 +480,12 @@ export default function QuizApp() {
   const pct = Math.round((correct / total) * 100)
   const msg =
     pct >= 90
-      ? "Xuat sac! Em hoc gioi lam!"
+      ? "Xuất sắc! Em học giỏi lắm!"
       : pct >= 70
-        ? "Tot lam! Co gang them nhe!"
+        ? "Tốt lắm! Cố gắng thêm nhé!"
         : pct >= 50
-          ? "On them mot chut nua nhe!"
-          : "Can on tap nhieu hon nha!"
+          ? "Ôn thêm một chút nữa nhé!"
+          : "Cần ôn tập nhiều hơn nha!"
 
   // Chapter stats
   const chStats: Record<number, { ok: number; total: number }> = {}
@@ -514,16 +514,16 @@ export default function QuizApp() {
           <div className="grid grid-cols-2 gap-2.5 mb-6">
             <div className="p-3.5 rounded-xl bg-[#f0fdf4] text-center">
               <div className="text-xl font-bold text-[#16a34a]">{correct}</div>
-              <div className="text-xs text-muted-foreground mt-0.5">Cau dung</div>
+              <div className="text-xs text-muted-foreground mt-0.5">Câu đúng</div>
             </div>
             <div className="p-3.5 rounded-xl bg-[#fff1f1] text-center">
               <div className="text-xl font-bold text-[#dc2626]">{total - correct}</div>
-              <div className="text-xs text-muted-foreground mt-0.5">Cau sai</div>
+              <div className="text-xs text-muted-foreground mt-0.5">Câu sai</div>
             </div>
           </div>
 
           <div className="text-sm font-semibold text-foreground mb-3">
-            Ket qua theo chuong:
+            Kết quả theo chương:
           </div>
           <div className="mb-5">
             {Object.entries(chStats).map(([ch, s]) => {
@@ -559,7 +559,7 @@ export default function QuizApp() {
                   : "text-muted-foreground border-transparent"
               )}
             >
-              Cau sai ({wrongResults.length})
+              Câu sai ({wrongResults.length})
             </button>
             <button
               onClick={() => setResultTab("all")}
@@ -570,14 +570,14 @@ export default function QuizApp() {
                   : "text-muted-foreground border-transparent"
               )}
             >
-              Tat ca ({total})
+              Tất cả ({total})
             </button>
           </div>
 
           <div className="max-h-[300px] overflow-y-auto">
             {displayResults.length === 0 ? (
               <div className="text-center text-[#16a34a] font-semibold p-4">
-                Hoan hao! Khong co cau nao sai!
+                Hoàn hảo! Không có câu nào sai!
               </div>
             ) : (
               displayResults.map((r, i) => (
@@ -591,14 +591,14 @@ export default function QuizApp() {
                   )}
                 >
                   <div className="font-semibold text-foreground mb-1.5">
-                    {i + 1}. Cau {r.n}: {r.q}
+                    {i + 1}. Câu {r.n}: {r.q}
                   </div>
                   <div className="text-muted-foreground">
-                    Ban chon: <strong>{LABELS[r.sel]}</strong> — {r.opts[r.sel] || "?"}
+                    Bạn chọn: <strong>{LABELS[r.sel]}</strong> — {r.opts[r.sel] || "?"}
                   </div>
                   {!r.ok && (
                     <div className="text-[#16a34a]">
-                      Dap an dung: <strong>{LABELS[r.a]}</strong> — {r.opts[r.a]}
+                      Đáp án đúng: <strong>{LABELS[r.a]}</strong> — {r.opts[r.a]}
                     </div>
                   )}
                 </div>
@@ -612,13 +612,13 @@ export default function QuizApp() {
               variant="outline"
               className="flex-1 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
             >
-              Trang chu
+              Trang chủ
             </Button>
             <Button
               onClick={retry}
               className="flex-1 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
             >
-              Lam lai
+              Làm lại
             </Button>
           </div>
         </CardContent>
