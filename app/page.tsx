@@ -147,10 +147,10 @@ const RAW = [
   [218,"Chủ trương đoàn kết những người có tín ngưỡng và không có tín ngưỡng của Đảng CSVN nhằm mục đích gì?",["Xây dựng khối đại đoàn kết dân tộc","Tạo điều kiện cho các tôn giáo phát triển","Xoá bỏ dần các tôn giáo","Thực hiện đoàn kết các tôn giáo"],0,6],
   [219,"Theo quan điểm của Đảng CSVN, giải quyết tốt mối quan hệ dân tộc và tôn giáo phải thực hiện yêu cầu nào?",["Nghiêm trị những hoạt động phá hoại khối đại đoàn kết dân tộc","Tạo điều kiện cho các tôn giáo phát triển","Thừa nhận các tôn giáo mới","Hạn chế sự phát triển của tôn giáo"],0,6],
   // Câu đặc biệt
-  [151,"Yêu anh Đan không?",["Có","Có chứ","Có luôn","Có hết lòng"],0,99],
+  [151,"Yêu anh Đan không?",["còn lâu","ko quen","bạn thôi","Có hết lòng"],0,99],
   [152,"Anh nào đẹp trai nhất?",["Sơn Tùng","Jungkook","Anh Đan","Soobin"],2,99],
-  [153,"Nhớ anh nhiều không?",["Nhớ chút chút","Nhớ nhiều lắm","Nhớ muốn chết","24/7 đều nhớ"],3,99],
-  [154,"Khi gặp, thơm anh Đan bao nhiêu cái?",["1 cái","10 cái","100 cái","Không đếm được"],3,99],
+  [153,"Nhớ anh nhiều không?",["Nhớ chút chút","Nhớ sương sương","Nhớ bình thường","24/7 đều nhớ"],3,99],
+  [154,"Khi gặp, thơm anh Đan bao nhiêu cái?",["1 cái","10 cái","100 cái","111 cái"],3,99],
 ]
 
 
