@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils"
-
 const RAW = [
   [31,"Giai cấp công nhân hiện đại hình thành và phát triển trong xã hội nào?",["Công xã nguyên thuỷ","Chiếm hữu nô lệ","Phong kiến","Tư bản chủ nghĩa"],3,2],
   [32,"Giai cấp nào sau đây KHÔNG có hệ tư tưởng riêng?",["Giai cấp nông dân","Giai cấp công nhân","Giai cấp tư sản","Giai cấp địa chủ"],0,2],
@@ -127,17 +126,41 @@ const RAW = [
   [148,"Liên minh giữa GCCN với GCND và đội ngũ trí thức ở Việt Nam có thuận lợi là do",["Giai cấp công nhân có số lượng đông","Họ cùng có lợi ích chung","Người nông dân có bản tính chân thật","Đội ngũ trí thức không có hệ tư tưởng riêng"],1,5],
   [149,"Sau đổi mới, ở Việt Nam xuất hiện giai cấp, tầng lớp mới nào?",["Đội ngũ trí thức","Giai cấp công nhân","Đội ngũ doanh nhân","Giai cấp tư sản"],2,5],
   [150,"Từ năm 2004, Nhà nước ta lấy ngày 13/10 hằng năm để tôn vinh lực lượng nào?",["Trí thức","Phụ nữ","Doanh nhân","Thanh niên"],2,5],
-  [151,"Yêu anh Đan không?",["một ít","thích thôi","là bạn thôi","Yêu hết lòng"],0,5],
-  [152,"Anh nào đẹp trai nhất?",["Sơn Tùng","Jungkook","Anh Đan","Soobin"],2,5],
-  [153,"Nhớ anh nhiều không?",["Nhớ chút chút","quên r","Nhớ bình thường","24/7 đều nhớ"],3,5],
-  [154,"Khi gặp, thơm anh Đan bao nhiêu cái?",["1 cái","10 cái","100 cái","111 cái"],3,5],
+  // CHƯƠNG 6: Dân tộc & Tôn giáo
+  [201,"Theo từ Nguyên học, thuật ngữ 'dân chủ' được hiểu là gì?",["Quyền lực thuộc về nhân dân","Quyền của con người","Quyền tự do của mỗi người","Là một trật tự xã hội"],0,6],
+  [202,"Theo CN Mác-Lênin, xét về phương diện chế độ xã hội và chính trị, dân chủ được hiểu là gì?",["Quyền lực thuộc về nhân dân","Là một nguyên tắc tổ chức, quản lý xã hội","Là một hình thức nhà nước","Quyền lực thuộc về tất cả mọi người"],2,6],
+  [203,"Theo CN Mác-Lênin, xét về phương diện tổ chức, quản lý xã hội, dân chủ được hiểu là gì?",["Nhân dân là chủ nhân của nhà nước","Một nguyên tắc tổ chức, quản lý xã hội","Một hình thức tồn tại nhà nước","Quyền lực thuộc về tất cả mọi người"],1,6],
+  [204,"Theo tư tưởng Hồ Chí Minh, dưới góc độ là một giá trị xã hội và mang tính nhân loại, dân chủ được hiểu là gì?",["Thực thi công bằng trong xã hội","Một nguyên tắc tổ chức, quản lý xã hội","Dân là chủ và dân làm chủ","Quyền lực thuộc về tất cả mọi người"],2,6],
+  [205,"Trong xã hội công xã nguyên thuỷ, dân chủ của nhân dân thuộc về hình thức nào sau đây?",["Dân chủ trực tiếp","Dân chủ gián tiếp","Dân chủ hỗn hợp","Dân chủ tập trung"],0,6],
+  [206,"Khi nghiên cứu lịch sử, Ph. Ăngghen gọi dân chủ trong xã hội nguyên thuỷ là gì?",["Dân chủ đại diện","Dân chủ tập trung","Dân chủ quân sự","Dân chủ dân sự"],2,6],
+  [207,"Nền dân chủ XHCN được phôi thai từ cuộc cách mạng nào?",["Công xã Pari 1871","Cách mạng Tháng Mười Nga 1917","Cách mạng dân tộc dân chủ Trung Quốc 1949","Cách mạng Tháng Tám 1945"],0,6],
+  [208,"Chế độ dân chủ nhân dân ở nước ta được xác lập từ khi nào?",["Sau Cách mạng tháng Tám 1945","Sau năm 1954","Sau 30/4/1975","Sau Đại hội đổi mới 1986"],0,6],
+  [209,"Theo quan niệm chung, yếu tố nào sau đây có ý nghĩa quan trọng nhất trong việc thực thi nhà nước pháp quyền?",["Đề cao phúc lợi xã hội","Tôn trọng tự do cá nhân","Phát huy quyền bình đẳng","Thượng tôn pháp luật"],3,6],
+  [210,"Ở Việt Nam hiện nay, chức năng cơ bản nhất của Mặt trận Tổ quốc là gì?",["Cứu trợ nhân đạo","Phản biện xã hội","Kiểm soát nhà nước","Đoàn kết dân tộc"],3,6],
+  [211,"Toàn cầu hóa làm xuất hiện khái niệm biên giới 'mềm', yếu tố nào quan trọng nhất để phân định ranh giới giữa các quốc gia dân tộc?",["Kinh tế","Văn hóa","Ngôn ngữ","Tôn giáo"],1,6],
+  [212,"Trong thời đại hiện nay, các dân tộc liên hiệp với nhau nhằm mục đích gì?",["Xóa bỏ sự khác biệt giữa các dân tộc","Phát triển dân tộc và giải quyết các vấn đề toàn cầu","Chống phân biệt chủng tộc","Chống chủ nghĩa bá quyền nước lớn"],1,6],
+  [213,"Cương lĩnh dân tộc của CN Mác-Lênin đã trở thành ... cho chính sách dân tộc của Đảng Cộng sản",["Động lực","Cơ sở lý luận","Cơ sở thực tiễn","Bài học quan trọng"],1,6],
+  [214,"Việc đảm bảo tỷ lệ thích hợp người dân tộc thiểu số trong các cơ quan quyền lực nhà nước là thể hiện?",["Quyền bình đẳng giữa các dân tộc","Quyền bình đẳng giữa các công dân","Quyền bình đẳng giữa các vùng miền","Quyền bình đẳng giữa các giai tầng"],0,6],
+  [215,"Theo Chủ nghĩa Mác-Lênin, tôn giáo là một...?",["Hình thức hoạt động chính trị","Hình thái nghệ thuật phổ biến","Hình thái tâm lý cá nhân","Hình thái ý thức xã hội"],3,6],
+  [216,"Sự khác biệt căn bản giữa tôn giáo và mê tín dị đoan thể hiện ở điểm nào sau đây?",["Đối tượng sùng bái","Nghi thức thờ cúng","Bản chất niềm tin","Không gian thờ cúng"],2,6],
+  [217,"Theo Ban Tôn giáo Chính phủ, tính đến tháng 12/2020 Việt Nam có bao nhiêu tôn giáo được công nhận tư cách pháp nhân?",["Mười ba","Mười lăm","Mười sáu","Hai mươi"],2,6],
+  [218,"Chủ trương đoàn kết những người có tín ngưỡng và không có tín ngưỡng của Đảng CSVN nhằm mục đích gì?",["Xây dựng khối đại đoàn kết dân tộc","Tạo điều kiện cho các tôn giáo phát triển","Xoá bỏ dần các tôn giáo","Thực hiện đoàn kết các tôn giáo"],0,6],
+  [219,"Theo quan điểm của Đảng CSVN, giải quyết tốt mối quan hệ dân tộc và tôn giáo phải thực hiện yêu cầu nào?",["Nghiêm trị những hoạt động phá hoại khối đại đoàn kết dân tộc","Tạo điều kiện cho các tôn giáo phát triển","Thừa nhận các tôn giáo mới","Hạn chế sự phát triển của tôn giáo"],0,6],
+  // Câu đặc biệt
+  [151,"Yêu anh Đan không?",["Có","Có chứ","Có luôn","Có hết lòng"],0,99],
+  [152,"Anh nào đẹp trai nhất?",["Sơn Tùng","Jungkook","Anh Đan","Soobin"],2,99],
+  [153,"Nhớ anh nhiều không?",["Nhớ chút chút","Nhớ nhiều lắm","Nhớ muốn chết","24/7 đều nhớ"],3,99],
+  [154,"Khi gặp, thơm anh Đan bao nhiêu cái?",["1 cái","10 cái","100 cái","Không đếm được"],3,99],
 ]
 
+
 const CHAPTERS: Record<number, string> = {
-  2: "Chuong 2: Su menh lich su GCCN",
-  3: "Chuong 3: CNXH & Thoi ki qua do",
-  4: "Chuong 4: Dan chu XHCN & Nha nuoc XHCN",
-  5: "Chuong 5: Co cau xa hoi - Giai cap"
+  2: "Chương 2: Sứ mệnh lịch sử GCCN",
+  3: "Chương 3: CNXH & Thời kì quá độ",
+  4: "Chương 4: Dân chủ XHCN & Nhà nước XHCN",
+  5: "Chương 5: Cơ cấu xã hội - Giai cấp",
+  6: "Chương 6: Dân tộc & Tôn giáo",
+  99: "💕 Câu hỏi đặc biệt",
 }
 
 const LABELS = ["A", "B", "C", "D"]
@@ -275,93 +298,93 @@ export default function QuizApp() {
   // Home Screen
   if (screen === "home") {
     return (
-      <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
+        <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
         <Card className="max-w-[680px] w-full rounded-[20px] shadow-lg border-0">
-          <CardContent className="p-8">
-            <h1 className="text-2xl font-bold text-center text-foreground mb-1">
-              Quiz CNXHKH
-            </h1>
-            <p className="text-center text-muted-foreground text-sm mb-7">
-              Chu nghia Xa hoi Khoa hoc
-            </p>
+        <CardContent className="p-8">
+        <h1 className="text-2xl font-bold text-center text-foreground mb-1">
+            Quiz CNXHKH
+    </h1>
+    <p className="text-center text-muted-foreground text-sm mb-7">
+        Chu nghia Xa hoi Khoa hoc
+    </p>
 
-            <div className="grid grid-cols-3 gap-3 mb-7">
-              <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-[#4f46e5]">120</div>
-                <div className="text-xs text-muted-foreground mt-1">Cau hoi</div>
-              </div>
-              <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-[#4f46e5]">4</div>
-                <div className="text-xs text-muted-foreground mt-1">Chuong</div>
-              </div>
-              <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-[#4f46e5]">100%</div>
-                <div className="text-xs text-muted-foreground mt-1">Co dap an</div>
-              </div>
-            </div>
+    <div className="grid grid-cols-3 gap-3 mb-7">
+    <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
+    <div className="text-2xl font-bold text-[#4f46e5]">120</div>
+        <div className="text-xs text-muted-foreground mt-1">Cau hoi</div>
+    </div>
+    <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
+    <div className="text-2xl font-bold text-[#4f46e5]">4</div>
+        <div className="text-xs text-muted-foreground mt-1">Chuong</div>
+        </div>
+        <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
+    <div className="text-2xl font-bold text-[#4f46e5]">100%</div>
+        <div className="text-xs text-muted-foreground mt-1">Co dap an</div>
+    </div>
+    </div>
 
-            <div className="text-sm font-semibold text-foreground mb-3">
-              Chon chuong (hoac hoc tat ca)
-            </div>
-            <div className="grid grid-cols-2 gap-2.5 mb-5">
-              <button
-                onClick={() => setChapter(0)}
-                className={cn(
-                  "p-3.5 border-2 rounded-xl text-center text-sm font-medium transition-all",
-                  chapter === 0
-                    ? "border-[#4f46e5] bg-[#f0f0ff] text-[#4f46e5]"
-                    : "border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f0f0ff] hover:text-[#4f46e5]"
-                )}
-              >
-                <span className="text-xl block mb-1">&#9733;</span>
-                Tat ca chuong
-              </button>
-              {Object.entries(CHAPTERS).map(([k, v]) => (
-                <button
-                  key={k}
-                  onClick={() => setChapter(parseInt(k))}
-                  className={cn(
-                    "p-3.5 border-2 rounded-xl text-center text-sm font-medium transition-all",
-                    chapter === parseInt(k)
-                      ? "border-[#4f46e5] bg-[#f0f0ff] text-[#4f46e5]"
-                      : "border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f0f0ff] hover:text-[#4f46e5]"
-                  )}
-                >
-                  <span className="text-xl block mb-1">&#128214;</span>
-                  {v.split(":")[0]}
-                </button>
-              ))}
-            </div>
+    <div className="text-sm font-semibold text-foreground mb-3">
+        Chon chuong (hoac hoc tat ca)
+    </div>
+    <div className="grid grid-cols-2 gap-2.5 mb-5">
+    <button
+        onClick={() => setChapter(0)}
+    className={cn(
+      "p-3.5 border-2 rounded-xl text-center text-sm font-medium transition-all",
+      chapter === 0
+        ? "border-[#4f46e5] bg-[#f0f0ff] text-[#4f46e5]"
+        : "border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f0f0ff] hover:text-[#4f46e5]"
+  )}
+  >
+    <span className="text-xl block mb-1">&#9733;</span>
+    Tat ca chuong
+    </button>
+    {Object.entries(CHAPTERS).map(([k, v]) => (
+        <button
+            key={k}
+      onClick={() => setChapter(parseInt(k))}
+      className={cn(
+        "p-3.5 border-2 rounded-xl text-center text-sm font-medium transition-all",
+        chapter === parseInt(k)
+          ? "border-[#4f46e5] bg-[#f0f0ff] text-[#4f46e5]"
+          : "border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f0f0ff] hover:text-[#4f46e5]"
+    )}
+    >
+      <span className="text-xl block mb-1">&#128214;</span>
+      {v.split(":")[0]}
+      </button>
+    ))}
+    </div>
 
-            <div className="flex gap-4 mb-5">
-              <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
-                <Checkbox
-                  checked={shuffleQ}
-                  onCheckedChange={(checked) => setShuffleQ(checked as boolean)}
-                  className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
-                />
-                Xao tron cau hoi
-              </label>
-              <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
-                <Checkbox
-                  checked={shuffleA}
-                  onCheckedChange={(checked) => setShuffleA(checked as boolean)}
-                  className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
-                />
-                Xao tron dap an
-              </label>
-            </div>
+    <div className="flex gap-4 mb-5">
+    <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
+    <Checkbox
+        checked={shuffleQ}
+    onCheckedChange={(checked) => setShuffleQ(checked as boolean)}
+    className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
+        />
+        Xao tron cau hoi
+    </label>
+    <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
+    <Checkbox
+        checked={shuffleA}
+    onCheckedChange={(checked) => setShuffleA(checked as boolean)}
+    className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
+        />
+        Xao tron dap an
+    </label>
+    </div>
 
-            <Button
-              onClick={startQuiz}
-              className="w-full py-6 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-xl text-base"
-            >
-              Bat dau lam bai →
+    <Button
+    onClick={startQuiz}
+    className="w-full py-6 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-xl text-base"
+        >
+        Bat dau lam bai →
             </Button>
-          </CardContent>
-        </Card>
-      </div>
-    )
+            </CardContent>
+            </Card>
+            </div>
+  )
   }
 
   // Quiz Screen
@@ -371,109 +394,109 @@ export default function QuizApp() {
     const pct = Math.round((idx / total) * 100)
 
     return (
-      <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
+        <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
         <Card className="max-w-[680px] w-full rounded-[20px] shadow-lg border-0">
-          <CardContent className="p-8">
-            <div className="bg-[#e8eaff] rounded-full h-1.5 mb-5 overflow-hidden">
-              <div
-                className="h-full bg-[#4f46e5] rounded-full transition-all duration-300"
-                style={{ width: `${pct}%` }}
-              />
-            </div>
+        <CardContent className="p-8">
+        <div className="bg-[#e8eaff] rounded-full h-1.5 mb-5 overflow-hidden">
+        <div
+            className="h-full bg-[#4f46e5] rounded-full transition-all duration-300"
+    style={{ width: `${pct}%` }}
+    />
+    </div>
 
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-sm text-muted-foreground">
-                Cau {idx + 1}/{total} (Cau {q.n})
-              </span>
-              <span className="text-xs bg-[#f0f0ff] text-[#4f46e5] px-2.5 py-1 rounded-full font-medium">
-                {CHAPTERS[q.ch]?.split(":")[0] || ""}
-              </span>
-            </div>
+    <div className="flex justify-between items-center mb-4">
+    <span className="text-sm text-muted-foreground">
+        Cau {idx + 1}/{total} (Cau {q.n})
+    </span>
+    <span className="text-xs bg-[#f0f0ff] text-[#4f46e5] px-2.5 py-1 rounded-full font-medium">
+        {CHAPTERS[q.ch]?.split(":")[0] || ""}
+        </span>
+        </div>
 
-            <div className="text-base font-semibold text-foreground leading-relaxed mb-5">
-              {q.q}
-            </div>
+        <div className="text-base font-semibold text-foreground leading-relaxed mb-5">
+        {q.q}
+        </div>
 
-            <div className="flex flex-col gap-2.5">
-              {q.o.map((opt, i) => {
-                let btnClass =
-                  "p-3.5 border-2 rounded-xl text-left text-sm flex items-center gap-2.5 transition-all"
-                let labelClass =
-                  "w-6 h-6 rounded-full bg-[#f0f0ff] flex items-center justify-center font-bold text-xs text-[#4f46e5] shrink-0"
+        <div className="flex flex-col gap-2.5">
+        {q.o.map((opt, i) => {
+            let btnClass =
+                "p-3.5 border-2 rounded-xl text-left text-sm flex items-center gap-2.5 transition-all"
+            let labelClass =
+                "w-6 h-6 rounded-full bg-[#f0f0ff] flex items-center justify-center font-bold text-xs text-[#4f46e5] shrink-0"
 
-                if (answered) {
-                  if (i === q.a) {
-                    btnClass += " border-[#16a34a] bg-[#f0fdf4]"
-                    labelClass =
-                      "w-6 h-6 rounded-full bg-[#16a34a] flex items-center justify-center font-bold text-xs text-white shrink-0"
-                  } else if (i === selected) {
-                    btnClass += " border-[#dc2626] bg-[#fff1f1]"
-                    labelClass =
-                      "w-6 h-6 rounded-full bg-[#dc2626] flex items-center justify-center font-bold text-xs text-white shrink-0"
-                  } else {
-                    btnClass += " border-[#e8eaff] bg-white text-foreground"
-                  }
-                } else {
-                  btnClass +=
-                    " border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f5f5ff] cursor-pointer"
-                }
+            if (answered) {
+              if (i === q.a) {
+                btnClass += " border-[#16a34a] bg-[#f0fdf4]"
+                labelClass =
+                    "w-6 h-6 rounded-full bg-[#16a34a] flex items-center justify-center font-bold text-xs text-white shrink-0"
+              } else if (i === selected) {
+                btnClass += " border-[#dc2626] bg-[#fff1f1]"
+                labelClass =
+                    "w-6 h-6 rounded-full bg-[#dc2626] flex items-center justify-center font-bold text-xs text-white shrink-0"
+              } else {
+                btnClass += " border-[#e8eaff] bg-white text-foreground"
+              }
+            } else {
+              btnClass +=
+                  " border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f5f5ff] cursor-pointer"
+            }
 
-                return (
-                  <button
+            return (
+                <button
                     key={i}
-                    onClick={() => handleSelect(i)}
-                    disabled={answered}
-                    className={btnClass}
-                  >
-                    <span className={labelClass}>{LABELS[i]}</span>
-                    {opt}
-                  </button>
-                )
-              })}
-            </div>
+            onClick={() => handleSelect(i)}
+            disabled={answered}
+            className={btnClass}
+            >
+            <span className={labelClass}>{LABELS[i]}</span>
+            {opt}
+            </button>
+          )
+          })}
+        </div>
 
-            {answered && (
-              <div
-                className={cn(
-                  "mt-4 p-3 rounded-lg text-sm font-medium",
-                  selected === q.a
-                    ? "bg-[#f0fdf4] text-[#16a34a]"
-                    : "bg-[#fff1f1] text-[#dc2626]"
-                )}
-              >
-                {selected === q.a
-                  ? "Chinh xac!"
-                  : `Sai roi! Dap an dung: ${LABELS[q.a]}. ${q.o[q.a]}`}
-              </div>
-            )}
-
-            <div className="flex justify-between mt-5 gap-2.5">
-              {idx > 0 ? (
-                <Button
-                  onClick={handleBack}
-                  variant="outline"
-                  className="px-7 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
-                >
-                  ← Cau truoc
-                </Button>
-              ) : (
-                <span />
-              )}
-              {answered ? (
-                <Button
-                  onClick={handleNext}
-                  className="px-7 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
-                >
-                  {idx + 1 < total ? "Cau tiep theo →" : "Xem ket qua"}
-                </Button>
-              ) : (
-                <span />
-              )}
-            </div>
-          </CardContent>
-        </Card>
+    {answered && (
+        <div
+            className={cn(
+          "mt-4 p-3 rounded-lg text-sm font-medium",
+          selected === q.a
+            ? "bg-[#f0fdf4] text-[#16a34a]"
+            : "bg-[#fff1f1] text-[#dc2626]"
+    )}
+    >
+      {selected === q.a
+          ? "Chinh xac!"
+          : `Sai roi! Dap an dung: ${LABELS[q.a]}. ${q.o[q.a]}`}
       </div>
-    )
+    )}
+
+    <div className="flex justify-between mt-5 gap-2.5">
+    {idx > 0 ? (
+            <Button
+                onClick={handleBack}
+        variant="outline"
+    className="px-7 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
+        >
+                  ← Cau truoc
+    </Button>
+  ) : (
+        <span />
+    )}
+    {answered ? (
+            <Button
+                onClick={handleNext}
+        className="px-7 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
+            >
+            {idx + 1 < total ? "Cau tiep theo →" : "Xem ket qua"}
+            </Button>
+    ) : (
+        <span />
+    )}
+    </div>
+    </CardContent>
+    </Card>
+    </div>
+  )
   }
 
   // Result Screen
@@ -481,13 +504,13 @@ export default function QuizApp() {
   const total = results.length
   const pct = Math.round((correct / total) * 100)
   const msg =
-    pct >= 90
-      ? "Xuat sac! Em hoc gioi lam!"
-      : pct >= 70
-        ? "Tot lam! Co gang them nhe!"
-        : pct >= 50
-          ? "On them mot chut nua nhe!"
-          : "Can on tap nhieu hon nha!"
+      pct >= 90
+          ? "Xuat sac! Em hoc gioi lam!"
+          : pct >= 70
+              ? "Tot lam! Co gang them nhe!"
+              : pct >= 50
+                  ? "On them mot chut nua nhe!"
+                  : "Can on tap nhieu hon nha!"
 
   // Chapter stats
   const chStats: Record<number, { ok: number; total: number }> = {}
@@ -501,130 +524,130 @@ export default function QuizApp() {
   const displayResults = resultTab === "wrong" ? wrongResults : results
 
   return (
-    <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
       <Card className="max-w-[680px] w-full rounded-[20px] shadow-lg border-0">
-        <CardContent className="p-8">
-          <div className="text-center mb-7">
-            <div className="w-[120px] h-[120px] rounded-full bg-[#4f46e5] flex flex-col items-center justify-center mx-auto mb-4">
-              <div className="text-3xl font-bold text-white">{correct}</div>
-              <div className="text-sm text-white/80">/ {total}</div>
-            </div>
-            <div className="text-xl font-bold text-foreground">{pct}%</div>
-            <div className="text-sm text-muted-foreground mt-1">{msg}</div>
-          </div>
+      <CardContent className="p-8">
+      <div className="text-center mb-7">
+      <div className="w-[120px] h-[120px] rounded-full bg-[#4f46e5] flex flex-col items-center justify-center mx-auto mb-4">
+      <div className="text-3xl font-bold text-white">{correct}</div>
+          <div className="text-sm text-white/80">/ {total}</div>
+      </div>
+      <div className="text-xl font-bold text-foreground">{pct}%</div>
+      <div className="text-sm text-muted-foreground mt-1">{msg}</div>
+      </div>
 
-          <div className="grid grid-cols-2 gap-2.5 mb-6">
-            <div className="p-3.5 rounded-xl bg-[#f0fdf4] text-center">
-              <div className="text-xl font-bold text-[#16a34a]">{correct}</div>
-              <div className="text-xs text-muted-foreground mt-0.5">Cau dung</div>
-            </div>
-            <div className="p-3.5 rounded-xl bg-[#fff1f1] text-center">
-              <div className="text-xl font-bold text-[#dc2626]">{total - correct}</div>
-              <div className="text-xs text-muted-foreground mt-0.5">Cau sai</div>
-            </div>
-          </div>
+      <div className="grid grid-cols-2 gap-2.5 mb-6">
+  <div className="p-3.5 rounded-xl bg-[#f0fdf4] text-center">
+  <div className="text-xl font-bold text-[#16a34a]">{correct}</div>
+      <div className="text-xs text-muted-foreground mt-0.5">Cau dung</div>
+  </div>
+  <div className="p-3.5 rounded-xl bg-[#fff1f1] text-center">
+  <div className="text-xl font-bold text-[#dc2626]">{total - correct}</div>
+      <div className="text-xs text-muted-foreground mt-0.5">Cau sai</div>
+  </div>
+  </div>
 
-          <div className="text-sm font-semibold text-foreground mb-3">
-            Ket qua theo chuong:
+  <div className="text-sm font-semibold text-foreground mb-3">
+      Ket qua theo chuong:
+      </div>
+      <div className="mb-5">
+      {Object.entries(chStats).map(([ch, s]) => {
+          const p = Math.round((s.ok / s.total) * 100)
+          const barClass =
+              p >= 80 ? "bg-[#16a34a]" : p < 50 ? "bg-[#dc2626]" : "bg-[#4f46e5]"
+          return (
+              <div key={ch} className="mb-2.5">
+          <div className="flex justify-between text-sm text-muted-foreground mb-1">
+              <span>{CHAPTERS[parseInt(ch)] || `Chuong ${ch}`}</span>
+              <span className="font-semibold">
+              {s.ok}/{s.total} ({p}%)
+          </span>
           </div>
-          <div className="mb-5">
-            {Object.entries(chStats).map(([ch, s]) => {
-              const p = Math.round((s.ok / s.total) * 100)
-              const barClass =
-                p >= 80 ? "bg-[#16a34a]" : p < 50 ? "bg-[#dc2626]" : "bg-[#4f46e5]"
-              return (
-                <div key={ch} className="mb-2.5">
-                  <div className="flex justify-between text-sm text-muted-foreground mb-1">
-                    <span>{CHAPTERS[parseInt(ch)] || `Chuong ${ch}`}</span>
-                    <span className="font-semibold">
-                      {s.ok}/{s.total} ({p}%)
-                    </span>
-                  </div>
-                  <div className="bg-[#e8eaff] rounded-full h-2 overflow-hidden">
-                    <div
-                      className={cn("h-full rounded-full transition-all", barClass)}
-                      style={{ width: `${p}%` }}
-                    />
-                  </div>
-                </div>
-              )
-            })}
+          <div className="bg-[#e8eaff] rounded-full h-2 overflow-hidden">
+          <div
+              className={cn("h-full rounded-full transition-all", barClass)}
+          style={{ width: `${p}%` }}
+          />
           </div>
+          </div>
+        )
+        })}
+      </div>
 
-          <div className="flex border-b-2 border-[#e8eaff] mb-4">
-            <button
-              onClick={() => setResultTab("wrong")}
-              className={cn(
-                "px-4 py-2 text-sm font-semibold border-b-2 -mb-0.5 transition-colors",
-                resultTab === "wrong"
-                  ? "text-[#4f46e5] border-[#4f46e5]"
-                  : "text-muted-foreground border-transparent"
-              )}
-            >
-              Cau sai ({wrongResults.length})
-            </button>
-            <button
-              onClick={() => setResultTab("all")}
-              className={cn(
-                "px-4 py-2 text-sm font-semibold border-b-2 -mb-0.5 transition-colors",
-                resultTab === "all"
-                  ? "text-[#4f46e5] border-[#4f46e5]"
-                  : "text-muted-foreground border-transparent"
-              )}
-            >
-              Tat ca ({total})
-            </button>
-          </div>
+      <div className="flex border-b-2 border-[#e8eaff] mb-4">
+  <button
+      onClick={() => setResultTab("wrong")}
+  className={cn(
+    "px-4 py-2 text-sm font-semibold border-b-2 -mb-0.5 transition-colors",
+    resultTab === "wrong"
+      ? "text-[#4f46e5] border-[#4f46e5]"
+      : "text-muted-foreground border-transparent"
+)}
+>
+  Cau sai ({wrongResults.length})
+  </button>
+  <button
+  onClick={() => setResultTab("all")}
+  className={cn(
+    "px-4 py-2 text-sm font-semibold border-b-2 -mb-0.5 transition-colors",
+    resultTab === "all"
+      ? "text-[#4f46e5] border-[#4f46e5]"
+      : "text-muted-foreground border-transparent"
+)}
+>
+  Tat ca ({total})
+  </button>
+  </div>
 
-          <div className="max-h-[300px] overflow-y-auto">
-            {displayResults.length === 0 ? (
-              <div className="text-center text-[#16a34a] font-semibold p-4">
+  <div className="max-h-[300px] overflow-y-auto">
+      {displayResults.length === 0 ? (
+            <div className="text-center text-[#16a34a] font-semibold p-4">
                 Hoan hao! Khong co cau nao sai!
-              </div>
-            ) : (
-              displayResults.map((r, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "p-3 rounded-lg mb-2 text-sm border-l-[3px]",
-                    r.ok
-                      ? "bg-[#f0fdf4] border-l-[#16a34a]"
-                      : "bg-[#fff1f1] border-l-[#dc2626]"
-                  )}
-                >
-                  <div className="font-semibold text-foreground mb-1.5">
-                    {i + 1}. Cau {r.n}: {r.q}
-                  </div>
-                  <div className="text-muted-foreground">
-                    Ban chon: <strong>{LABELS[r.sel]}</strong> — {r.opts[r.sel] || "?"}
-                  </div>
-                  {!r.ok && (
-                    <div className="text-[#16a34a]">
-                      Dap an dung: <strong>{LABELS[r.a]}</strong> — {r.opts[r.a]}
-                    </div>
-                  )}
-                </div>
-              ))
-            )}
-          </div>
+            </div>
+) : (
+      displayResults.map((r, i) => (
+          <div
+              key={i}
+  className={cn(
+    "p-3 rounded-lg mb-2 text-sm border-l-[3px]",
+    r.ok
+        ? "bg-[#f0fdf4] border-l-[#16a34a]"
+        : "bg-[#fff1f1] border-l-[#dc2626]"
+)}
+>
+  <div className="font-semibold text-foreground mb-1.5">
+      {i + 1}. Cau {r.n}: {r.q}
+  </div>
+  <div className="text-muted-foreground">
+      Ban chon: <strong>{LABELS[r.sel]}</strong> — {r.opts[r.sel] || "?"}
+  </div>
+  {!r.ok && (
+      <div className="text-[#16a34a]">
+          Dap an dung: <strong>{LABELS[r.a]}</strong> — {r.opts[r.a]}
+  </div>
+  )}
+  </div>
+))
+)}
+  </div>
 
-          <div className="flex gap-2.5 mt-5">
-            <Button
-              onClick={goHome}
-              variant="outline"
-              className="flex-1 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
-            >
-              Trang chu
-            </Button>
-            <Button
-              onClick={retry}
-              className="flex-1 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
-            >
-              Lam lai
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
+  <div className="flex gap-2.5 mt-5">
+  <Button
+      onClick={goHome}
+  variant="outline"
+  className="flex-1 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
+      >
+      Trang chu
+  </Button>
+  <Button
+  onClick={retry}
+  className="flex-1 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
+      >
+      Lam lai
+  </Button>
+  </div>
+  </CardContent>
+  </Card>
+  </div>
+)
 }
