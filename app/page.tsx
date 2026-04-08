@@ -118,7 +118,7 @@ const RAW = [
   [139,"Yếu tố quyết định liên minh giữa công nhân, nông dân và các tầng lớp lao động khác là",["Cùng sống trong một quốc gia dân tộc","Có những lợi ích cơ bản thống nhất","Có chung nền văn hoá, tâm lí","Có chung hệ tư tưởng"],1,5],
   [140,"Trong hệ thống chính sách, chính sách nào cần được đặt lên vị trí hàng đầu?",["Chính trị","Kinh tế","Văn hoá","Tư tưởng"],1,5],
   [141,"Lực lượng xã hội nào có vai trò đặc biệt trong nâng cao sức cạnh tranh, bảo đảm độc lập, tự chủ của nền kinh tế?",["Giai cấp công nhân","Đội ngũ trí thức","Giai cấp nông dân","Đội ngũ doanh nhân"],3,5],
-  [142,"Lực lượng xã hội nào có vai trò đặc biệt quan trọng trong xây dựng nền văn hoá tiên tiến và phát triển kinh tế tri th���c?",["Giai cấp công nhân","Đội ngũ trí thức","Đội ngũ thanh niên","Đội ngũ doanh nhân"],1,5],
+  [142,"Lực lượng xã hội nào có vai trò đặc biệt quan trọng trong xây dựng nền văn hoá tiên tiến và phát tri���n kinh tế tri th���c?",["Giai cấp công nhân","Đội ngũ trí thức","Đội ngũ thanh niên","Đội ngũ doanh nhân"],1,5],
   [143,"Tầng lớp nào được coi là 'rường cột' của nước nhà, chủ nhân tương lai của đất nước?",["Trí thức","Doanh nhân","Phụ nữ","Thanh niên"],3,5],
   [144,"Trong thời kì quá độ lên CNXH ở Việt Nam hiện nay, giai cấp nào có vai trò quyết định tiến trình cách mạng?",["Giai cấp nông dân","Giai cấp công nhân","Đội ngũ trí thức","Đội ngũ doanh nhân"],1,5],
   [145,"Chính sách xã hội liên quan đến yếu tố nào cần được đặt lên vị trí hàng đầu?",["Cơ cấu xã hội - dân số","Cơ cấu xã hội - tôn giáo","Cơ cấu xã hội - giai cấp","Cơ cấu xã hội - dân tộc"],2,5],
@@ -130,11 +130,7 @@ const RAW = [
   [151,"Yêu anh Đan không?",["Có","Có chứ","Có luôn","Có hết lòng"],0,5],
   [152,"Anh nào đẹp trai nhất?",["Sơn Tùng","Jungkook","Anh Đan","Soobin"],2,5],
   [153,"Nhớ anh nhiều không?",["Nhớ chút chút","Nhớ nhiều lắm","Nhớ muốn chết","24/7 đều nhớ"],3,5],
-  [154,"Ai nấu ăn ngon hơn?",["Em","Anh Đan","Mẹ em","Grab Food"],1,5],
-  [155,"Nếu anh béo lên 20kg, em còn yêu không?",["Vẫn yêu","Yêu hơn vì nhiều thịt ôm","Bắt đi tập gym","Anh béo vẫn đẹp trai"],0,5],
-  [156,"Điều gì ở anh khiến em yêu nhất?",["Đẹp trai","Hài hước","Chiều em","Tất cả luôn"],3,5],
-  [157,"Em muốn đi đâu với anh nhất?",["Đà Lạt","Hàn Quốc","Nhật Bản","Ở đâu có anh là được"],3,5],
-  [158,"Một ngày không nhắn tin với anh, em sẽ?",["Bình thường","Hơi buồn","Buồn lắm","Nhắn trước không chịu được"],3,5],
+  [154,"Khi gặp, thơm anh Đan bao nhiêu cái?",["1 cái","10 cái","100 cái","Không đếm được"],3,5],
 ]
 
 const CHAPTERS: Record<number, string> = {
