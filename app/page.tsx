@@ -1,5 +1,6 @@
 "use client"
 
+// Quiz App - Scientific Socialism
 import { useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -59,7 +60,7 @@ const RAW = [
   [80,"Bảo vệ chủ nghĩa Mác - Lênin, chống xuyên tạc là thực hiện nội dung nào trong sứ mệnh lịch sử của GCCN?",["Lĩnh vực kinh tế - xã hội","Lĩnh vực chính trị - xã hội","Lĩnh vực văn hoá - tư tưởng","Lĩnh vực an ninh - quốc phòng"],2,3],
   [81,"Quá trình chuyển biến từ CNTB sang CNXH tất yếu phải có một thời kì lịch sử nhất định gọi là",["Thời kì quá độ","Chủ nghĩa xã hội","Chủ nghĩa cộng sản","Thời kì cái biến cách mạng"],0,3],
   [82,"Các nước đã trải qua giai đoạn TBCN phát triển đi lên CNXH, thuộc loại hình quá độ nào?",["Quá độ trực tiếp","Quá độ gián tiếp","Quá độ nhanh","Quá độ nhảy vọt"],0,3],
-  [83,"Các nước quá độ từ xã hội tiền tư bản, bỏ qua giai đoạn TBCN đi lên CNXH, thuộc loại hình quá độ nào?",["Quá độ trực tiếp","Quá độ gián tiếp","Quá độ từ từ","Quá độ nhảy vọt"],1,3],
+  [83,"Các nước quá độ từ xã hội tiền tư bản, bỏ qua giai đo���n TBCN đi lên CNXH, thuộc loại hình quá độ nào?",["Quá độ trực tiếp","Quá độ gián tiếp","Quá độ từ từ","Quá độ nhảy vọt"],1,3],
   [84,"Cương lĩnh xây dựng đất nước trong thời kì quá độ lên CNXH được Đảng thông qua ở Đại hội nào?",["Đại hội VI","Đại hội VII","Đại hội VIII","Đại hội IX"],1,3],
   [85,"Chủ thể của nhà nước Cộng hoà XHCN Việt Nam hiện nay là",["Đội ngũ trí thức","Giai cấp công nhân","Nhân dân","Giai cấp nông dân"],2,3],
   [86,"Chủ trương 'hoà nhập nhưng không hoà tan' thể hiện đặc trưng cơ bản nào của CNXH ở Việt Nam?",["Xây dựng xã hội dân giàu, nước mạnh, dân chủ, công bằng, văn minh","Xã hội do nhân dân lao động làm chủ","Có quan hệ hữu nghị và hợp tác với nhân dân các nước","Có nền văn hoá tiên tiến, đậm đà bản sắc dân tộc"],3,3],
