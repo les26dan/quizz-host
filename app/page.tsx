@@ -1,96 +1,11 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz CNXHKH</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',sans-serif;background:#f0f4ff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
-.app{max-width:680px;width:100%}
-.card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+"use client"
 
-/* HOME */
-.home-title{font-size:26px;font-weight:700;color:#1a1a2e;text-align:center;margin-bottom:6px}
-.home-sub{text-align:center;color:#666;font-size:14px;margin-bottom:28px}
-.home-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px}
-.stat-box{background:#f5f7ff;border-radius:12px;padding:16px;text-align:center}
-.stat-num{font-size:24px;font-weight:700;color:#4f46e5}
-.stat-label{font-size:12px;color:#888;margin-top:4px}
-.mode-label{font-size:13px;font-weight:600;color:#444;margin-bottom:12px}
-.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.mode-btn{padding:14px;border:2px solid #e8eaff;border-radius:12px;background:#fff;cursor:pointer;text-align:center;transition:.15s;font-size:13px;color:#444;font-weight:500}
-.mode-btn:hover,.mode-btn.active{border-color:#4f46e5;background:#f0f0ff;color:#4f46e5}
-.mode-btn .icon{font-size:22px;display:block;margin-bottom:6px}
-.start-btn{width:100%;padding:16px;background:#4f46e5;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:.15s}
-.start-btn:hover{background:#4338ca}
+import { useState, useCallback } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { cn } from "@/lib/utils"
 
-/* QUIZ */
-.progress-bar{background:#e8eaff;border-radius:99px;height:6px;margin-bottom:20px;overflow:hidden}
-.progress-fill{height:100%;background:#4f46e5;border-radius:99px;transition:.3s}
-.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.q-num{font-size:13px;color:#888}
-.q-chapter{font-size:12px;background:#f0f0ff;color:#4f46e5;padding:3px 10px;border-radius:99px;font-weight:500}
-.q-text{font-size:16px;font-weight:600;color:#1a1a2e;line-height:1.6;margin-bottom:22px}
-.options{display:flex;flex-direction:column;gap:10px}
-.opt-btn{padding:14px 16px;border:2px solid #e8eaff;border-radius:12px;background:#fff;cursor:pointer;text-align:left;font-size:14px;color:#333;transition:.15s;display:flex;align-items:center;gap:10px}
-.opt-btn:hover:not(:disabled){border-color:#4f46e5;background:#f5f5ff}
-.opt-btn .opt-label{width:26px;height:26px;border-radius:50%;background:#f0f0ff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#4f46e5;flex-shrink:0}
-.opt-btn.correct{border-color:#16a34a;background:#f0fdf4}
-.opt-btn.correct .opt-label{background:#16a34a;color:#fff}
-.opt-btn.wrong{border-color:#dc2626;background:#fff1f1}
-.opt-btn.wrong .opt-label{background:#dc2626;color:#fff}
-.opt-btn:disabled{cursor:default}
-.feedback{margin-top:16px;padding:12px 16px;border-radius:10px;font-size:14px;font-weight:500}
-.feedback.ok{background:#f0fdf4;color:#16a34a}
-.feedback.bad{background:#fff1f1;color:#dc2626}
-.nav-row{display:flex;justify-content:space-between;margin-top:20px;gap:10px}
-.next-btn{padding:12px 28px;background:#4f46e5;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
-.next-btn:hover{background:#4338ca}
-.back-btn{padding:12px 28px;background:#fff;color:#4f46e5;border:2px solid #4f46e5;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
-.back-btn:hover{background:#f0f0ff}
-
-/* RESULT */
-.result-score{text-align:center;margin-bottom:28px}
-.score-circle{width:120px;height:120px;border-radius:50%;background:#4f46e5;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px}
-.score-big{font-size:32px;font-weight:700;color:#fff}
-.score-total{font-size:13px;color:rgba(255,255,255,.8)}
-.score-pct{font-size:22px;font-weight:700;color:#1a1a2e}
-.score-msg{font-size:14px;color:#666;margin-top:4px}
-.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-.res-box{padding:14px;border-radius:12px;text-align:center}
-.res-box.green{background:#f0fdf4}
-.res-box.red{background:#fff1f1}
-.res-num{font-size:22px;font-weight:700}
-.res-num.green{color:#16a34a}
-.res-num.red{color:#dc2626}
-.res-label{font-size:12px;color:#888;margin-top:2px}
-.review-title{font-size:14px;font-weight:600;color:#444;margin-bottom:12px}
-.review-item{padding:12px;border-radius:10px;margin-bottom:8px;font-size:13px}
-.review-item.ok{background:#f0fdf4;border-left:3px solid #16a34a}
-.review-item.bad{background:#fff1f1;border-left:3px solid #dc2626}
-.review-q{font-weight:600;color:#1a1a2e;margin-bottom:6px}
-.review-ans{color:#555}
-.btn-row{display:flex;gap:10px;margin-top:20px}
-.btn-outline{flex:1;padding:13px;border:2px solid #4f46e5;background:#fff;color:#4f46e5;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
-.btn-solid{flex:1;padding:13px;background:#4f46e5;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
-/* CHAPTER STATS */
-.ch-stats{margin-bottom:20px}
-.ch-row{margin-bottom:10px}
-.ch-label{display:flex;justify-content:space-between;font-size:13px;color:#555;margin-bottom:4px}
-.ch-bar-bg{background:#e8eaff;border-radius:99px;height:8px;overflow:hidden}
-.ch-bar-fill{height:100%;border-radius:99px;background:#4f46e5;transition:.4s}
-.ch-bar-fill.full{background:#16a34a}
-.ch-bar-fill.low{background:#dc2626}
-/* TABS */
-.tab-row{display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid #e8eaff}
-.tab-btn{padding:9px 18px;font-size:13px;font-weight:600;color:#888;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px}
-.tab-btn.active{color:#4f46e5;border-bottom-color:#4f46e5}
-</style>
-</head>
-<body>
-<div class="app" id="root"></div>
-<script>
 const RAW = [
   [31,"Giai cấp công nhân hiện đại hình thành và phát triển trong xã hội nào?",["Công xã nguyên thuỷ","Chiếm hữu nô lệ","Phong kiến","Tư bản chủ nghĩa"],3,2],
   [32,"Giai cấp nào sau đây KHÔNG có hệ tư tưởng riêng?",["Giai cấp nông dân","Giai cấp công nhân","Giai cấp tư sản","Giai cấp địa chủ"],0,2],
@@ -212,216 +127,501 @@ const RAW = [
   [148,"Liên minh giữa GCCN với GCND và đội ngũ trí thức ở Việt Nam có thuận lợi là do",["Giai cấp công nhân có số lượng đông","Họ cùng có lợi ích chung","Người nông dân có bản tính chân thật","Đội ngũ trí thức không có hệ tư tưởng riêng"],1,5],
   [149,"Sau đổi mới, ở Việt Nam xuất hiện giai cấp, tầng lớp mới nào?",["Đội ngũ trí thức","Giai cấp công nhân","Đội ngũ doanh nhân","Giai cấp tư sản"],2,5],
   [150,"Từ năm 2004, Nhà nước ta lấy ngày 13/10 hằng năm để tôn vinh lực lượng nào?",["Trí thức","Phụ nữ","Doanh nhân","Thanh niên"],2,5],
-  [151,"Yêu anh Đan không?",["Có","Có chứ","Có luôn","Có hết lòng"],0,5],
-];
+  [151,"Yeu anh Dan khong?",["Co","Co chu","Co luon","Co het long"],0,5],
+]
 
-const CHAPTERS = {2:"Chương 2: Sứ mệnh lịch sử GCCN",3:"Chương 3: CNXH & Thời kì quá độ",4:"Chương 4: Dân chủ XHCN & Nhà nước XHCN",5:"Chương 5: Cơ cấu xã hội - Giai cấp"};
-const LABELS = ["A","B","C","D"];
+const CHAPTERS: Record<number, string> = {
+  2: "Chuong 2: Su menh lich su GCCN",
+  3: "Chuong 3: CNXH & Thoi ki qua do",
+  4: "Chuong 4: Dan chu XHCN & Nha nuoc XHCN",
+  5: "Chuong 5: Co cau xa hoi - Giai cap"
+}
 
-function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const LABELS = ["A", "B", "C", "D"]
 
-let state = {
-  screen: "home",
-  mode: "all",
-  chapter: 0,
-  questions: [],
-  idx: 0,
-  selected: null,
-  answered: false,
-  results: [],
-  shuffleQ: true,
-  shuffleA: true,
-};
+type Question = {
+  n: number
+  q: string
+  o: string[]
+  a: number
+  ch: number
+}
 
-function buildQuestions(){
-  let pool = RAW.map(r=>({n:r[0],q:r[1],o:r[2],a:r[3],ch:r[4]}));
-  if(state.chapter) pool = pool.filter(q=>q.ch===state.chapter);
-  if(state.shuffleQ) pool = shuffle(pool);
-  return pool.map(q=>{
-    if(state.shuffleA){
-      const paired = q.o.map((opt,i)=>({opt,correct:i===q.a}));
-      const shuffled = shuffle(paired);
-      return {...q, o:shuffled.map(p=>p.opt), a:shuffled.findIndex(p=>p.correct)};
+type Result = {
+  n: number
+  q: string
+  opts: string[]
+  a: number
+  sel: number
+  ok: boolean
+  ch: number
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+export default function QuizApp() {
+  const [screen, setScreen] = useState<"home" | "quiz" | "result">("home")
+  const [chapter, setChapter] = useState(0)
+  const [shuffleQ, setShuffleQ] = useState(true)
+  const [shuffleA, setShuffleA] = useState(true)
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [idx, setIdx] = useState(0)
+  const [selected, setSelected] = useState<number | null>(null)
+  const [answered, setAnswered] = useState(false)
+  const [results, setResults] = useState<Result[]>([])
+  const [resultTab, setResultTab] = useState<"wrong" | "all">("wrong")
+
+  const buildQuestions = useCallback(() => {
+    let pool: Question[] = RAW.map((r) => ({
+      n: r[0] as number,
+      q: r[1] as string,
+      o: r[2] as string[],
+      a: r[3] as number,
+      ch: r[4] as number,
+    }))
+
+    if (chapter) {
+      pool = pool.filter((q) => q.ch === chapter)
     }
-    return q;
-  });
-}
 
-function render(){
-  const root = document.getElementById("root");
-  if(state.screen==="home") root.innerHTML = renderHome();
-  else if(state.screen==="quiz") root.innerHTML = renderQuiz();
-  else root.innerHTML = renderResult();
-  attachEvents();
-}
-
-function renderHome(){
-  const chOpts = Object.entries(CHAPTERS).map(([k,v])=>`<button class="mode-btn ${state.chapter==k?'active':''}" data-ch="${k}"><span class="icon">📖</span>${v.split(":")[0]}</button>`).join("");
-  return `<div class="card">
-    <div class="home-title">📚 Quiz CNXHKH</div>
-    <div class="home-sub">Chủ nghĩa Xã hội Khoa học</div>
-    <div class="home-stats">
-      <div class="stat-box"><div class="stat-num">120</div><div class="stat-label">Câu hỏi</div></div>
-      <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Chương</div></div>
-      <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Có đáp án</div></div>
-    </div>
-    <div class="mode-label">Chọn chương (hoặc học tất cả)</div>
-    <div class="mode-grid">
-      <button class="mode-btn ${state.chapter===0?'active':''}" data-ch="0"><span class="icon">🌟</span>Tất cả chương</button>
-      ${chOpts}
-    </div>
-    <div style="display:flex;gap:10px;margin-bottom:20px">
-      <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;color:#555">
-        <input type="checkbox" id="shQ" ${state.shuffleQ?'checked':''} style="accent-color:#4f46e5"> Xáo trộn câu hỏi
-      </label>
-      <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;color:#555">
-        <input type="checkbox" id="shA" ${state.shuffleA?'checked':''} style="accent-color:#4f46e5"> Xáo trộn đáp án
-      </label>
-    </div>
-    <button class="start-btn" id="startBtn">Bắt đầu làm bài →</button>
-  </div>`;
-}
-
-function renderQuiz(){
-  const q = state.questions[state.idx];
-  const total = state.questions.length;
-  const pct = Math.round((state.idx/total)*100);
-  const opts = q.o.map((opt,i)=>{
-    let cls = "opt-btn";
-    if(state.answered){
-      if(i===q.a) cls+=" correct";
-      else if(i===state.selected) cls+=" wrong";
+    if (shuffleQ) {
+      pool = shuffle(pool)
     }
-    return `<button class="opt-btn ${state.answered?(i===q.a?"correct":i===state.selected?"wrong":""):""}" data-opt="${i}" ${state.answered?'disabled':''}>
-      <span class="opt-label">${LABELS[i]}</span>${opt}
-    </button>`;
-  }).join("");
-  const feedback = state.answered ? `<div class="feedback ${state.selected===q.a?'ok':'bad'}">${state.selected===q.a?'✅ Chính xác!':'❌ Sai rồi! Đáp án đúng: '+LABELS[q.a]+'. '+q.o[q.a]}</div>` : "";
-  return `<div class="card">
-    <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-    <div class="q-meta">
-      <span class="q-num">Câu ${state.idx+1}/${total} (Câu ${q.n})</span>
-      <span class="q-chapter">${CHAPTERS[q.ch]?.split(":")[0]||""}</span>
-    </div>
-    <div class="q-text">${q.q}</div>
-    <div class="options">${opts}</div>
-    ${feedback}
-    <div class="nav-row">
-      ${state.idx>0?`<button class="back-btn" id="backBtn">← Câu trước</button>`:`<span></span>`}
-      ${state.answered?`<button class="next-btn" id="nextBtn">${state.idx+1<total?"Câu tiếp theo →":"Xem kết quả 🎉"}</button>`:`<span></span>`}
-    </div>
-  </div>`;
-}
 
-function renderResult(){
-  const correct = state.results.filter(r=>r.ok).length;
-  const total = state.results.length;
-  const pct = Math.round((correct/total)*100);
-  const msg = pct>=90?"🎉 Xuất sắc! Em học giỏi lắm!":pct>=70?"👍 Tốt lắm! Cố gắng thêm nhé!":pct>=50?"📚 Ôn thêm một chút nữa nhé!":"💪 Cần ôn tập nhiều hơn nha!";
+    return pool.map((q) => {
+      if (shuffleA) {
+        const paired = q.o.map((opt, i) => ({ opt, correct: i === q.a }))
+        const shuffled = shuffle(paired)
+        return {
+          ...q,
+          o: shuffled.map((p) => p.opt),
+          a: shuffled.findIndex((p) => p.correct),
+        }
+      }
+      return q
+    })
+  }, [chapter, shuffleQ, shuffleA])
+
+  const startQuiz = () => {
+    const qs = buildQuestions()
+    setQuestions(qs)
+    setIdx(0)
+    setSelected(null)
+    setAnswered(false)
+    setResults([])
+    setResultTab("wrong")
+    setScreen("quiz")
+  }
+
+  const handleSelect = (optIdx: number) => {
+    if (answered) return
+    setSelected(optIdx)
+    setAnswered(true)
+    const q = questions[idx]
+    setResults((prev) => [
+      ...prev,
+      {
+        n: q.n,
+        q: q.q,
+        opts: q.o,
+        a: q.a,
+        sel: optIdx,
+        ok: optIdx === q.a,
+        ch: q.ch,
+      },
+    ])
+  }
+
+  const handleNext = () => {
+    if (idx + 1 < questions.length) {
+      setIdx(idx + 1)
+      setSelected(null)
+      setAnswered(false)
+    } else {
+      setScreen("result")
+    }
+  }
+
+  const handleBack = () => {
+    if (idx > 0) {
+      setIdx(idx - 1)
+      const prevResult = results[idx - 1]
+      if (prevResult) {
+        setSelected(prevResult.sel)
+        setAnswered(true)
+      }
+    }
+  }
+
+  const goHome = () => {
+    setScreen("home")
+    setResults([])
+  }
+
+  const retry = () => {
+    startQuiz()
+  }
+
+  // Home Screen
+  if (screen === "home") {
+    return (
+      <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
+        <Card className="max-w-[680px] w-full rounded-[20px] shadow-lg border-0">
+          <CardContent className="p-8">
+            <h1 className="text-2xl font-bold text-center text-foreground mb-1">
+              Quiz CNXHKH
+            </h1>
+            <p className="text-center text-muted-foreground text-sm mb-7">
+              Chu nghia Xa hoi Khoa hoc
+            </p>
+
+            <div className="grid grid-cols-3 gap-3 mb-7">
+              <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
+                <div className="text-2xl font-bold text-[#4f46e5]">120</div>
+                <div className="text-xs text-muted-foreground mt-1">Cau hoi</div>
+              </div>
+              <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
+                <div className="text-2xl font-bold text-[#4f46e5]">4</div>
+                <div className="text-xs text-muted-foreground mt-1">Chuong</div>
+              </div>
+              <div className="bg-[#f5f7ff] rounded-xl p-4 text-center">
+                <div className="text-2xl font-bold text-[#4f46e5]">100%</div>
+                <div className="text-xs text-muted-foreground mt-1">Co dap an</div>
+              </div>
+            </div>
+
+            <div className="text-sm font-semibold text-foreground mb-3">
+              Chon chuong (hoac hoc tat ca)
+            </div>
+            <div className="grid grid-cols-2 gap-2.5 mb-5">
+              <button
+                onClick={() => setChapter(0)}
+                className={cn(
+                  "p-3.5 border-2 rounded-xl text-center text-sm font-medium transition-all",
+                  chapter === 0
+                    ? "border-[#4f46e5] bg-[#f0f0ff] text-[#4f46e5]"
+                    : "border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f0f0ff] hover:text-[#4f46e5]"
+                )}
+              >
+                <span className="text-xl block mb-1">&#9733;</span>
+                Tat ca chuong
+              </button>
+              {Object.entries(CHAPTERS).map(([k, v]) => (
+                <button
+                  key={k}
+                  onClick={() => setChapter(parseInt(k))}
+                  className={cn(
+                    "p-3.5 border-2 rounded-xl text-center text-sm font-medium transition-all",
+                    chapter === parseInt(k)
+                      ? "border-[#4f46e5] bg-[#f0f0ff] text-[#4f46e5]"
+                      : "border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f0f0ff] hover:text-[#4f46e5]"
+                  )}
+                >
+                  <span className="text-xl block mb-1">&#128214;</span>
+                  {v.split(":")[0]}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex gap-4 mb-5">
+              <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
+                <Checkbox
+                  checked={shuffleQ}
+                  onCheckedChange={(checked) => setShuffleQ(checked as boolean)}
+                  className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
+                />
+                Xao tron cau hoi
+              </label>
+              <label className="flex items-center gap-2 text-sm cursor-pointer text-muted-foreground">
+                <Checkbox
+                  checked={shuffleA}
+                  onCheckedChange={(checked) => setShuffleA(checked as boolean)}
+                  className="data-[state=checked]:bg-[#4f46e5] data-[state=checked]:border-[#4f46e5]"
+                />
+                Xao tron dap an
+              </label>
+            </div>
+
+            <Button
+              onClick={startQuiz}
+              className="w-full py-6 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-xl text-base"
+            >
+              Bat dau lam bai →
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  // Quiz Screen
+  if (screen === "quiz") {
+    const q = questions[idx]
+    const total = questions.length
+    const pct = Math.round((idx / total) * 100)
+
+    return (
+      <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
+        <Card className="max-w-[680px] w-full rounded-[20px] shadow-lg border-0">
+          <CardContent className="p-8">
+            <div className="bg-[#e8eaff] rounded-full h-1.5 mb-5 overflow-hidden">
+              <div
+                className="h-full bg-[#4f46e5] rounded-full transition-all duration-300"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-sm text-muted-foreground">
+                Cau {idx + 1}/{total} (Cau {q.n})
+              </span>
+              <span className="text-xs bg-[#f0f0ff] text-[#4f46e5] px-2.5 py-1 rounded-full font-medium">
+                {CHAPTERS[q.ch]?.split(":")[0] || ""}
+              </span>
+            </div>
+
+            <div className="text-base font-semibold text-foreground leading-relaxed mb-5">
+              {q.q}
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              {q.o.map((opt, i) => {
+                let btnClass =
+                  "p-3.5 border-2 rounded-xl text-left text-sm flex items-center gap-2.5 transition-all"
+                let labelClass =
+                  "w-6 h-6 rounded-full bg-[#f0f0ff] flex items-center justify-center font-bold text-xs text-[#4f46e5] shrink-0"
+
+                if (answered) {
+                  if (i === q.a) {
+                    btnClass += " border-[#16a34a] bg-[#f0fdf4]"
+                    labelClass =
+                      "w-6 h-6 rounded-full bg-[#16a34a] flex items-center justify-center font-bold text-xs text-white shrink-0"
+                  } else if (i === selected) {
+                    btnClass += " border-[#dc2626] bg-[#fff1f1]"
+                    labelClass =
+                      "w-6 h-6 rounded-full bg-[#dc2626] flex items-center justify-center font-bold text-xs text-white shrink-0"
+                  } else {
+                    btnClass += " border-[#e8eaff] bg-white text-foreground"
+                  }
+                } else {
+                  btnClass +=
+                    " border-[#e8eaff] bg-white text-foreground hover:border-[#4f46e5] hover:bg-[#f5f5ff] cursor-pointer"
+                }
+
+                return (
+                  <button
+                    key={i}
+                    onClick={() => handleSelect(i)}
+                    disabled={answered}
+                    className={btnClass}
+                  >
+                    <span className={labelClass}>{LABELS[i]}</span>
+                    {opt}
+                  </button>
+                )
+              })}
+            </div>
+
+            {answered && (
+              <div
+                className={cn(
+                  "mt-4 p-3 rounded-lg text-sm font-medium",
+                  selected === q.a
+                    ? "bg-[#f0fdf4] text-[#16a34a]"
+                    : "bg-[#fff1f1] text-[#dc2626]"
+                )}
+              >
+                {selected === q.a
+                  ? "Chinh xac!"
+                  : `Sai roi! Dap an dung: ${LABELS[q.a]}. ${q.o[q.a]}`}
+              </div>
+            )}
+
+            <div className="flex justify-between mt-5 gap-2.5">
+              {idx > 0 ? (
+                <Button
+                  onClick={handleBack}
+                  variant="outline"
+                  className="px-7 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
+                >
+                  ← Cau truoc
+                </Button>
+              ) : (
+                <span />
+              )}
+              {answered ? (
+                <Button
+                  onClick={handleNext}
+                  className="px-7 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
+                >
+                  {idx + 1 < total ? "Cau tiep theo →" : "Xem ket qua"}
+                </Button>
+              ) : (
+                <span />
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  // Result Screen
+  const correct = results.filter((r) => r.ok).length
+  const total = results.length
+  const pct = Math.round((correct / total) * 100)
+  const msg =
+    pct >= 90
+      ? "Xuat sac! Em hoc gioi lam!"
+      : pct >= 70
+        ? "Tot lam! Co gang them nhe!"
+        : pct >= 50
+          ? "On them mot chut nua nhe!"
+          : "Can on tap nhieu hon nha!"
 
   // Chapter stats
-  const chStats = {};
-  state.results.forEach(r=>{
-    if(!chStats[r.ch]) chStats[r.ch]={ok:0,total:0};
-    chStats[r.ch].total++;
-    if(r.ok) chStats[r.ch].ok++;
-  });
-  const chHtml = Object.entries(chStats).map(([ch,s])=>{
-    const p=Math.round((s.ok/s.total)*100);
-    const cls=p>=80?"full":p<50?"low":"";
-    return `<div class="ch-row">
-      <div class="ch-label"><span>${CHAPTERS[ch]||"Chương "+ch}</span><span style="font-weight:600">${s.ok}/${s.total} (${p}%)</span></div>
-      <div class="ch-bar-bg"><div class="ch-bar-fill ${cls}" style="width:${p}%"></div></div>
-    </div>`;
-  }).join("");
+  const chStats: Record<number, { ok: number; total: number }> = {}
+  results.forEach((r) => {
+    if (!chStats[r.ch]) chStats[r.ch] = { ok: 0, total: 0 }
+    chStats[r.ch].total++
+    if (r.ok) chStats[r.ch].ok++
+  })
 
-  // Tab content
-  const tab = state.resultTab||"wrong";
-  const list = tab==="wrong" ? state.results.filter(r=>!r.ok) : state.results;
-  const listHtml = list.length===0
-    ? `<div style='text-align:center;color:#16a34a;font-weight:600;padding:16px'>🏆 Hoàn hảo! Không có câu nào sai!</div>`
-    : list.map((r,i)=>`
-    <div class="review-item ${r.ok?"ok":"bad"}">
-      <div class="review-q">${i+1}. Câu ${r.n}: ${r.q}</div>
-      <div class="review-ans">Bạn chọn: <b>${LABELS[r.sel]}</b> — ${r.opts[r.sel]||"?"}</div>
-      ${!r.ok?`<div class="review-ans" style="color:#16a34a">Đáp án đúng: <b>${LABELS[r.a]}</b> — ${r.opts[r.a]}</div>`:""}
-    </div>`).join("");
+  const wrongResults = results.filter((r) => !r.ok)
+  const displayResults = resultTab === "wrong" ? wrongResults : results
 
-  return `<div class="card">
-    <div class="result-score">
-      <div class="score-circle"><div class="score-big">${correct}</div><div class="score-total">/ ${total}</div></div>
-      <div class="score-pct">${pct}%</div>
-      <div class="score-msg">${msg}</div>
+  return (
+    <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center p-4">
+      <Card className="max-w-[680px] w-full rounded-[20px] shadow-lg border-0">
+        <CardContent className="p-8">
+          <div className="text-center mb-7">
+            <div className="w-[120px] h-[120px] rounded-full bg-[#4f46e5] flex flex-col items-center justify-center mx-auto mb-4">
+              <div className="text-3xl font-bold text-white">{correct}</div>
+              <div className="text-sm text-white/80">/ {total}</div>
+            </div>
+            <div className="text-xl font-bold text-foreground">{pct}%</div>
+            <div className="text-sm text-muted-foreground mt-1">{msg}</div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2.5 mb-6">
+            <div className="p-3.5 rounded-xl bg-[#f0fdf4] text-center">
+              <div className="text-xl font-bold text-[#16a34a]">{correct}</div>
+              <div className="text-xs text-muted-foreground mt-0.5">Cau dung</div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-[#fff1f1] text-center">
+              <div className="text-xl font-bold text-[#dc2626]">{total - correct}</div>
+              <div className="text-xs text-muted-foreground mt-0.5">Cau sai</div>
+            </div>
+          </div>
+
+          <div className="text-sm font-semibold text-foreground mb-3">
+            Ket qua theo chuong:
+          </div>
+          <div className="mb-5">
+            {Object.entries(chStats).map(([ch, s]) => {
+              const p = Math.round((s.ok / s.total) * 100)
+              const barClass =
+                p >= 80 ? "bg-[#16a34a]" : p < 50 ? "bg-[#dc2626]" : "bg-[#4f46e5]"
+              return (
+                <div key={ch} className="mb-2.5">
+                  <div className="flex justify-between text-sm text-muted-foreground mb-1">
+                    <span>{CHAPTERS[parseInt(ch)] || `Chuong ${ch}`}</span>
+                    <span className="font-semibold">
+                      {s.ok}/{s.total} ({p}%)
+                    </span>
+                  </div>
+                  <div className="bg-[#e8eaff] rounded-full h-2 overflow-hidden">
+                    <div
+                      className={cn("h-full rounded-full transition-all", barClass)}
+                      style={{ width: `${p}%` }}
+                    />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          <div className="flex border-b-2 border-[#e8eaff] mb-4">
+            <button
+              onClick={() => setResultTab("wrong")}
+              className={cn(
+                "px-4 py-2 text-sm font-semibold border-b-2 -mb-0.5 transition-colors",
+                resultTab === "wrong"
+                  ? "text-[#4f46e5] border-[#4f46e5]"
+                  : "text-muted-foreground border-transparent"
+              )}
+            >
+              Cau sai ({wrongResults.length})
+            </button>
+            <button
+              onClick={() => setResultTab("all")}
+              className={cn(
+                "px-4 py-2 text-sm font-semibold border-b-2 -mb-0.5 transition-colors",
+                resultTab === "all"
+                  ? "text-[#4f46e5] border-[#4f46e5]"
+                  : "text-muted-foreground border-transparent"
+              )}
+            >
+              Tat ca ({total})
+            </button>
+          </div>
+
+          <div className="max-h-[300px] overflow-y-auto">
+            {displayResults.length === 0 ? (
+              <div className="text-center text-[#16a34a] font-semibold p-4">
+                Hoan hao! Khong co cau nao sai!
+              </div>
+            ) : (
+              displayResults.map((r, i) => (
+                <div
+                  key={i}
+                  className={cn(
+                    "p-3 rounded-lg mb-2 text-sm border-l-[3px]",
+                    r.ok
+                      ? "bg-[#f0fdf4] border-l-[#16a34a]"
+                      : "bg-[#fff1f1] border-l-[#dc2626]"
+                  )}
+                >
+                  <div className="font-semibold text-foreground mb-1.5">
+                    {i + 1}. Cau {r.n}: {r.q}
+                  </div>
+                  <div className="text-muted-foreground">
+                    Ban chon: <strong>{LABELS[r.sel]}</strong> — {r.opts[r.sel] || "?"}
+                  </div>
+                  {!r.ok && (
+                    <div className="text-[#16a34a]">
+                      Dap an dung: <strong>{LABELS[r.a]}</strong> — {r.opts[r.a]}
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="flex gap-2.5 mt-5">
+            <Button
+              onClick={goHome}
+              variant="outline"
+              className="flex-1 py-3 border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#f0f0ff] font-semibold rounded-lg"
+            >
+              Trang chu
+            </Button>
+            <Button
+              onClick={retry}
+              className="flex-1 py-3 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg"
+            >
+              Lam lai
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
-    <div class="result-grid">
-      <div class="res-box green"><div class="res-num green">${correct}</div><div class="res-label">Câu đúng</div></div>
-      <div class="res-box red"><div class="res-num red">${total-correct}</div><div class="res-label">Câu sai</div></div>
-    </div>
-    <div class="review-title">Kết quả theo chương:</div>
-    <div class="ch-stats">${chHtml}</div>
-    <div class="tab-row">
-      <button class="tab-btn ${tab==="wrong"?"active":""}" data-tab="wrong">❌ Câu sai (${state.results.filter(r=>!r.ok).length})</button>
-      <button class="tab-btn ${tab==="all"?"active":""}" data-tab="all">📋 Tất cả (${total})</button>
-    </div>
-    <div id="reviewList">${listHtml}</div>
-    <div class="btn-row">
-      <button class="btn-outline" id="homeBtn">🏠 Trang chủ</button>
-      <button class="btn-solid" id="retryBtn">🔄 Làm lại</button>
-    </div>
-  </div>`;
+  )
 }
-
-function attachEvents(){
-  document.querySelectorAll("[data-ch]").forEach(btn=>{
-    btn.addEventListener("click",()=>{state.chapter=parseInt(btn.dataset.ch);render();});
-  });
-  const startBtn = document.getElementById("startBtn");
-  if(startBtn) startBtn.addEventListener("click",()=>{
-    state.shuffleQ = document.getElementById("shQ").checked;
-    state.shuffleA = document.getElementById("shA").checked;
-    state.questions = buildQuestions();
-    state.idx=0; state.selected=null; state.answered=false; state.results=[]; state.history=[];
-    state.screen="quiz"; render();
-  });
-  document.querySelectorAll("[data-opt]").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      if(state.answered) return;
-      state.selected=parseInt(btn.dataset.opt);
-      state.answered=true;
-      const q=state.questions[state.idx];
-      state.results.push({n:q.n,q:q.q,opts:q.o,a:q.a,sel:state.selected,ok:state.selected===q.a,ch:q.ch});
-      render();
-    });
-  });
-  const backBtn = document.getElementById("backBtn");
-  if(backBtn) backBtn.addEventListener("click",()=>{
-    if(state.idx>0){
-      if(state.answered) state.results.pop();
-      state.idx--;
-      const prev = state.results[state.results.length-1];
-      if(prev){state.selected=prev.sel;state.answered=true;}
-      else{state.selected=null;state.answered=false;}
-      render();
-    }
-  });
-  const nextBtn = document.getElementById("nextBtn");
-  if(nextBtn) nextBtn.addEventListener("click",()=>{
-    if(state.idx+1<state.questions.length){state.idx++;state.selected=null;state.answered=false;render();}
-    else{state.screen="result";render();}
-  });
-  document.querySelectorAll("[data-tab]").forEach(btn=>{
-    btn.addEventListener("click",()=>{state.resultTab=btn.dataset.tab;render();});
-  });
-  const homeBtn = document.getElementById("homeBtn");
-  if(homeBtn) homeBtn.addEventListener("click",()=>{state.screen="home";render();});
-  const retryBtn = document.getElementById("retryBtn");
-  if(retryBtn) retryBtn.addEventListener("click",()=>{
-    state.questions=buildQuestions();state.idx=0;state.selected=null;state.answered=false;state.results=[];state.history=[];
-    state.screen="quiz";render();
-  });
-}
-
-render();
-</script>
-</body>
-</html>

@@ -1,2 +1,0 @@
-# quizz-host
-host quizz
