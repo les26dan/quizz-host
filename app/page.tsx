@@ -127,7 +127,10 @@ const RAW = [
   [148,"Liên minh giữa GCCN với GCND và đội ngũ trí thức ở Việt Nam có thuận lợi là do",["Giai cấp công nhân có số lượng đông","Họ cùng có lợi ích chung","Người nông dân có bản tính chân thật","Đội ngũ trí thức không có hệ tư tưởng riêng"],1,5],
   [149,"Sau đổi mới, ở Việt Nam xuất hiện giai cấp, tầng lớp mới nào?",["Đội ngũ trí thức","Giai cấp công nhân","Đội ngũ doanh nhân","Giai cấp tư sản"],2,5],
   [150,"Từ năm 2004, Nhà nước ta lấy ngày 13/10 hằng năm để tôn vinh lực lượng nào?",["Trí thức","Phụ nữ","Doanh nhân","Thanh niên"],2,5],
-  [151,"Yeu anh Dan khong?",["Co","Co chu","Co luon","Co het long"],0,5],
+  [151,"Yêu anh Đan không?",["một ít","thích thôi","là bạn thôi","Yêu hết lòng"],0,5],
+  [152,"Anh nào đẹp trai nhất?",["Sơn Tùng","Jungkook","Anh Đan","Soobin"],2,5],
+  [153,"Nhớ anh nhiều không?",["Nhớ chút chút","quên r","Nhớ bình thường","24/7 đều nhớ"],3,5],
+  [154,"Khi gặp, thơm anh Đan bao nhiêu cái?",["1 cái","10 cái","100 cái","111 cái"],3,5],
 ]
 
 const CHAPTERS: Record<number, string> = {
